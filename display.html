@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examples of CSS Display Types</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+
+        .example {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+
+        .block {
+            display: block;
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        .inline {
+            display: inline;
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+        }
+
+        .inline-block {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            margin: 5px;
+            width: 100px;
+            text-align: center;
+        }
+
+        .flex-container {
+            display: flex;
+            background-color: #9b59b6;
+            padding: 10px;
+            gap: 10px;
+        }
+
+        .flex-item {
+            background-color: #f1c40f;
+            color: white;
+            padding: 10px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background-color: #34495e;
+            padding: 10px;
+        }
+
+        .grid-item {
+            background-color: #1abc9c;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .none {
+            display: none;
+            background-color: #95a5a6;
+            color: white;
+            padding: 10px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Examples of CSS Display Types</h1>
+
+        <!-- Example of display: block -->
+        <div class="example">
+            <h2>display: block</h2>
+            <div class="block">Block Element 1</div>
+            <div class="block">Block Element 2</div>
+            <div class="block">Block Element 3</div>
+        </div>
+
+        <!-- Example of display: inline -->
+        <div class="example">
+            <h2>display: inline</h2>
+            <span class="inline">Inline Element 1</span>
+            <span class="inline">Inline Element 2</span>
+            <span class="inline">Inline Element 3</span>
+        </div>
+
+        <!-- Example of display: inline-block -->
+        <div class="example">
+            <h2>display: inline-block</h2>
+            <div class="inline-block">Inline-Block Element 1</div>
+            <div class="inline-block">Inline-Block Element 2</div>
+            <div class="inline-block">Inline-Block Element 3</div>
+        </div>
+
+        <!-- Example of display: flex -->
+        <div class="example">
+            <h2>display: flex</h2>
+            <div class="flex-container">
+                <div class="flex-item">Flex Item 1</div>
+                <div class="flex-item">Flex Item 2</div>
+                <div class="flex-item">Flex Item 3</div>
+            </div>
+        </div>
+
+        <!-- Example of display: grid -->
+        <div class="example">
+            <h2>display: grid</h2>
+            <div class="grid-container">
+                <div class="grid-item">Grid Item 1</div>
+                <div class="grid-item">Grid Item 2</div>
+                <div class="grid-item">Grid Item 3</div>
+            </div>
+        </div>
+
+        <!-- Example of display: none -->
+        <div class="example">
+            <h2>display: none</h2>
+            <div class="none">This element is hidden (display: none)</div>
+        </div>
+    </div>
+
+</body>
+</html>

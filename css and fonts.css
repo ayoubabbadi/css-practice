@@ -1,0 +1,59 @@
+/* تنسيق عام للنصوص */
+body {
+    font-family: 'Arial', sans-serif; /* عائلة الخط الافتراضية */
+}
+
+/* تنسيق النص باستخدام المعرف (id) */
+#unique-paragraph {
+    color: red;
+    font-size: 20px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط (عريض) */
+    font-family: 'Courier New', monospace; /* عائلة الخط */
+    text-transform: uppercase; /* تحويل النص إلى أحرف كبيرة */
+}
+
+/* تنسيق الصفوف الزوجية في الجدول */
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+    font-size: 16px; /* حجم الخط */
+    font-weight: normal; /* وزن الخط (عادي) */
+    font-family: 'Times New Roman', serif; /* عائلة الخط */
+    font-style: italic; /* تغيير النص (مائل) */
+}
+
+/* تنسيق الصفوف الفردية في الجدول */
+table tr:nth-child(odd) {
+    background-color: #e9e9e9;
+    font-size: 16px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط (عريض) */
+    font-family: 'Georgia', serif; /* عائلة الخط */
+    text-transform: lowercase; /* تحويل النص إلى أحرف صغيرة */
+}
+
+/* تنسيق العمود الثالث في الجدول */
+table tr td:nth-child(3) {
+    font-style: italic;
+    font-size: 14px; /* حجم الخط */
+    font-weight: bold; /* وزن الخط (عريض) */
+    font-family: 'Courier New', monospace; /* عائلة الخط */
+    text-decoration: overline; /* تغيير النص (وضع خط فوق النص) */
+}
+
+/* ألوان متناوبة للنصوص */
+.alternate-colors p:nth-child(odd) {
+    background-color: #cce5ff;
+    padding: 5px;
+    font-size: 16px; /* حجم الخط */
+    font-weight: 500; /* وزن الخط (متوسط) */
+    font-family: 'Arial', sans-serif; /* عائلة الخط */
+    text-transform: uppercase; /* تحويل النص إلى أحرف كبيرة */
+}
+
+.alternate-colors p:nth-child(even) {
+    background-color: #ffccff;
+    padding: 5px;
+    font-size: 16px; /* حجم الخط */
+    font-weight: 700; /* وزن الخط (عريض) */
+    font-family: 'Helvetica', sans-serif; /* عائلة الخط */
+    text-decoration: underline; /* تغيير النص (وضع خط تحت النص) */
+}

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Animation, Transition & Transform</title>
+    <style>
+            /* General Styles */
+            body {
+              font-family: Arial, sans-serif;
+              line-height: 1.6;
+              margin: 0;
+              padding: 20px;
+              background-color: #f5f5f5;
+            }
+
+            h1,
+            h2 {
+              color: #333;
+              text-align: center;
+            }
+
+            .example-section {
+              background: white;
+              border-radius: 8px;
+              padding: 20px;
+              margin-bottom: 30px;
+              box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+
+            .box {
+              width: 100px;
+              height: 100px;
+              background-color: #3498db;
+              color: white;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 20px auto;
+              border-radius: 8px;
+            }
+
+            /* 1. TRANSITION EXAMPLES */
+            .transition-box {
+              /* transition: [property] [duration] [timing-function] [delay] */
+              transition: all 1s ease;
+              /* transition: Shorthand to define property, duration, timing function, and delay all at once */
+              /* transition-property: The CSS property (or properties) you want to animate */
+              /* transition-duration: How long the transition takes to complete */
+              /* transition-timing-function: How the speed of the transition progresses over time (e.g., ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier) */
+
+              /*⚠ Example of transition-timing-function values ⚠*/
+              /* linear: Moves at a constant speed from start to finish */
+              /* ease: Starts slow, speeds up in the middle, then slows down at the end (default) */
+              /* ease-in: Starts slow and speeds up towards the end */
+              /* ease-out: Starts fast and slows down towards the end */
+              /* ease-in-out: Starts slow, speeds up in the middle, then slows down again */
+              /* step-start: Jumps immediately to the end state at the start (same as steps(1, start)) */
+              /* step-end: Jumps to the end state only at the last moment (same as steps(1, end)) */
+              /* steps(n): Splits the animation into equal "steps" (jumps instead of smooth animation) */
+              /* steps(n, start): Starts the steps immediately */
+              /* steps(n, end): Ends the steps at the last moment (default behavior) */
+              /* cubic-bezier(x1, y1, x2, y2): Custom timing function using a Bézier curve */
+
+              /* transition-delay: How long to wait before the transition starts */
+              /*transition-origin: Defines the origin point for the transform */
+            }
+
+            .transition-box:hover {
+              background-color: #e74c3c;
+              transform: translateY(-10px) scale(1.1);
+            }
+
+            /* Container for examples */
+            .transform-container {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 20px;
+              margin-top: 30px;
+            }
+
+            /* Box Styles - Initial State */
+            .transform-box {
+              width: 100px;
+              height: 100px;
+              background-color: #3498db;
+              color: white;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin: 20px auto;
+              border-radius: 8px;
+              transition: all 0.3s ease;
+              /* Smooth transition for hover effects */
+            }
+
+            /* 1. Translate - Moves element */
+            .translate:hover {
+              /* Moves 20px right (X), 10px down (Y) */
+              transform: translate(20px, 10px);
+            }
+
+            /* 2. Rotate - Spins element */
+            .rotate:hover {
+              /* Rotates 45 degrees clockwise */
+              transform: rotate(45deg);
+            }
+
+            /* 3. Scale - Resizes element */
+            .scale:hover {
+              /* Scales to 1.5 times original size */
+              transform: scale(1.5);
+            }
+
+            /* 4. Skew - Distorts element */
+            .skew:hover {
+              /* Skews 20deg horizontally, 10deg vertically */
+              transform: skew(20deg, 10deg);
+            }
+
+            /* 5. Multiple Transforms - Combined effects */
+            .multiple:hover {
+              /* Combines translate, rotate and scale */
+              transform: translateX(30px) rotate(30deg) scale(1.2);
+            }
+
+            /* 6. Transform Origin - Changes rotation point */
+            .origin {
+              /* Set transform origin to top-left corner */
+              transform-origin: top left;
+            }
+
+            .origin:hover {
+              /* Rotates around top-left corner */
+              transform: rotate(45deg);
+            }
+
+            /* 7. 3D Transform - Z-axis movement */
+            .translate-z:hover {
+              /* Moves element "closer" on Z-axis */
+              transform: perspective(500px) translateZ(50px);
+            }
+
+            /* 8. Rotate 3D - 3D rotation */
+            .rotate-3d:hover {
+              /* Rotates on X, Y and Z axes */
+              transform: perspective(500px) rotate3d(1, 1, 1, -180deg);
+            }
+            /* translate(x, y): Moves the element along the X and Y axis */
+            /* translateX(x): Moves the element horizontally */
+            /* translateY(y): Moves the element vertically */
+
+            /* scale(x, y): Scales the element's width and height */
+            /* scaleX(x): Scales the width only */
+            /* scaleY(y): Scales the height only */
+
+            /* rotate(angle): Rotates the element around its origin (2D) */
+            /* rotateX(angle): Rotates the element around the X-axis (3D) */
+            /* rotateY(angle): Rotates the element around the Y-axis (3D) */
+            /* rotateZ(angle): Rotates the element around the Z-axis (3D) */
+
+            /* skew(x-angle, y-angle): Skews the element along the X and Y axes */
+            /* skewX(angle): Skews the element along the X-axis */
+            /* skewY(angle): Skews the element along the Y-axis */
+
+            /* 3. ANIMATION EXAMPLES */
+            @keyframes exampleAnimation {
+              0% {
+                transform: translateY(0);
+                background-color: #3498db;
+              }
+
+              50% {
+                transform: translateY(-30px);
+                background-color: #e74c3c;
+              }
+
+              100% {
+                transform: translateY(0);
+                background-color: #9b59b6;
+              }
+            }
+
+            .animation-basic {
+              /* animation: [name] [duration] [timing-function] [delay] [iteration-count] [direction] [fill-mode] [play-state] */
+              animation: exampleAnimation 3s ease 0s infinite normal none running;
+              /* animation-name: Name of the animation */
+              /* animation-duration: Duration of the animation */
+              /* animation-timing-function: Type of easing (acceleration) */
+              /* animation-delay: Delay before the animation starts */
+              /* animation-iteration-count: Number of repetitions */
+              /* animation-direction: Direction of the animation */
+              /* animation-fill-mode: Should it stay in the final state? */
+              /* animation-play-state: Is it running or paused? */
+            }
+
+            .animation-delay {
+              animation: exampleAnimation 3s ease 2s infinite;
+            }
+
+            .animation-iteration {
+              animation: exampleAnimation 3s ease 0s 3 normal;
+            }
+
+            .animation-direction {
+              animation: exampleAnimation 3s ease 0s infinite alternate;
+            }
+
+            .animation-fill-mode {
+              animation: exampleAnimation 3s ease 0s 1 forwards;
+            }
+
+            .animation-play-state {
+              animation: exampleAnimation 3s ease 0s infinite;
+            }
+
+            .animation-play-state:hover {
+              animation-play-state: paused;
+            }
+
+            /* 4. COMBINED EXAMPLE */
+            .combined-box {
+              width: 150px;
+              height: 150px;
+              background-color: #f39c12;
+              transform: rotate(0deg) scale(1);
+              transition: all 0.5s ease-in-out;
+              animation: pulse 2s ease-in-out infinite alternate;
+            }
+
+            .combined-box:hover {
+              transform: rotate(15deg) scale(1.1);
+              background-color: #e74c3c;
+            }
+
+            @keyframes pulse {
+              0% {
+                box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7);
+              }
+
+              100% {
+                box-shadow: 0 0 0 20px rgba(243, 156, 18, 0);
+              }
+            }
+
+            /* Layout styles for examples */
+            .example-container {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              gap: 20px;
+              margin-top: 30px;
+            }
+
+            .example-card {
+              width: 150px;
+              text-align: center;
+            }
+
+            .example-label {
+              margin-top: 10px;
+              font-size: 14px;
+              color: #666;
+            }
+    </style>
+  </head>
+
+  <body>
+    <h1>CSS Animation, Transition & Transform Examples</h1>
+
+    <!-- TRANSITION SECTION -->
+    <section class="example-section">
+      <h2>1. Transition Examples</h2>
+      <p>
+        Transitions allow property changes to occur smoothly over a specified
+        duration
+      </p>
+
+      <div class="example-container">
+        <div class="example-card">
+          <div class="box transition-box"></div>
+          <div class="example-label">Hover to see transition</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Transition Properties:</h3>
+      <ul>
+        <li>
+          <strong>transition-property</strong>: Specifies which properties to
+          transition (or 'all')
+        </li>
+        <li>
+          <strong>transition-duration</strong>: How long the transition lasts
+          (e.g., 0.5s)
+        </li>
+        <li>
+          <strong>transition-timing-function</strong>: Speed curve (ease,
+          linear, ease-in, etc.)
+        </li>
+        <li>
+          <strong>transition-delay</strong>: Delay before transition starts
+        </li>
+      </ul>
+    </section>
+
+    <!-- TRANSFORM SECTION -->
+    <section class="example-section">
+      <h2>1. Basic Transform Functions</h2>
+      <p>Hover over each box to see the transform effect</p>
+
+      <div class="transform-container">
+        <div class="example-card">
+          <div class="transform-box translate"></div>
+          <div class="example-label">translate()<br />Moves element</div>
+        </div>
+
+        <div class="example-card">
+          <div class="transform-box rotate"></div>
+          <div class="example-label">rotate()<br />Spins element</div>
+        </div>
+
+        <div class="example-card">
+          <div class="transform-box scale"></div>
+          <div class="example-label">scale()<br />Resizes element</div>
+        </div>
+
+        <div class="example-card">
+          <div class="transform-box skew"></div>
+          <div class="example-label">skew()<br />Distorts element</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Advanced Transform Examples -->
+    <section class="example-section">
+      <h2>2. Advanced Transform Examples</h2>
+
+      <div class="transform-container">
+        <div class="example-card">
+          <div class="transform-box multiple"></div>
+          <div class="example-label">
+            Multiple transforms<br />Combined effects
+          </div>
+        </div>
+
+        <div class="example-card">
+          <div class="transform-box origin"></div>
+          <div class="example-label">
+            transform-origin<br />Changes rotation point
+          </div>
+        </div>
+
+        <div class="example-card">
+          <div class="transform-box translate-z"></div>
+          <div class="example-label">translateZ()<br />3D movement</div>
+        </div>
+
+        <div class="example-card">
+          <div class="transform-box rotate-3d"></div>
+          <div class="example-label">rotate3d()<br />3D rotation</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Transform Functions:</h3>
+      <ul>
+        <li><strong>translate(x, y)</strong>: Moves element along X/Y axes</li>
+        <li>
+          <strong>rotate(deg)</strong>: Rotates element by specified degrees
+        </li>
+        <li>
+          <strong>scale(x, y)</strong>: Resizes element (1 = original size)
+        </li>
+        <li><strong>skew(x, y)</strong>: Skews element along X/Y axes</li>
+        <li>
+          <strong>transform-origin</strong>: Changes the origin point for
+          transforms
+        </li>
+      </ul>
+    </section>
+
+    <!-- ANIMATION SECTION -->
+    <section class="example-section">
+      <h2>3. Animation Examples</h2>
+      <p>
+        Animations allow complex multi-stage visual changes using @keyframes
+      </p>
+
+      <div class="example-container">
+        <div class="example-card">
+          <div class="box animation-basic"></div>
+          <div class="example-label">Basic animation</div>
+        </div>
+        <div class="example-card">
+          <div class="box animation-delay"></div>
+          <div class="example-label">With delay</div>
+        </div>
+        <div class="example-card">
+          <div class="box animation-iteration"></div>
+          <div class="example-label">3 iterations</div>
+        </div>
+        <div class="example-card">
+          <div class="box animation-direction"></div>
+          <div class="example-label">Alternate direction</div>
+        </div>
+        <div class="example-card">
+          <div class="box animation-fill-mode"></div>
+          <div class="example-label">fill-mode: forwards</div>
+        </div>
+        <div class="example-card">
+          <div class="box animation-play-state"></div>
+          <div class="example-label">Hover to pause</div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <h3>Animation Properties:</h3>
+      <ul>
+        <li><strong>@keyframes</strong>: Defines the animation sequence</li>
+        <li><strong>animation-name</strong>: Name of the @keyframes rule</li>
+        <li><strong>animation-duration</strong>: How long one cycle lasts</li>
+        <li>
+          <strong>animation-timing-function</strong>: Speed curve (ease, linear,
+          etc.)
+        </li>
+        <li><strong>animation-delay</strong>: Delay before animation starts</li>
+        <li>
+          <strong>animation-iteration-count</strong>: How many times to play (or
+          'infinite')
+        </li>
+        <li>
+          <strong>animation-direction</strong>: normal, reverse, alternate,
+          alternate-reverse
+        </li>
+        <li>
+          <strong>animation-fill-mode</strong>: Styles applied before/after
+          animation
+        </li>
+        <li><strong>animation-play-state</strong>: running or paused</li>
+      </ul>
+    </section>
+
+    <!-- COMBINED EXAMPLE -->
+    <section class="example-section">
+      <h2>4. Combined Example</h2>
+      <p>Using animation, transition and transform together</p>
+
+      <div style="text-align: center">
+        <div class="box combined-box">Hover me!</div>
+        <p>
+          This box combines: <br />- Animation (pulsing shadow) <br />-
+          Transition (smooth hover effects) <br />- Transform (rotation and
+          scale)
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

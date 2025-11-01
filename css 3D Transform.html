@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Transform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+            width: 100%;
+        }
+        .example-container {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .example {
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .example-description {
+            text-align: center;
+            max-width: 600px;
+            margin-top: 15px;
+        }
+
+        /* 1. Flip Card Example */
+        .flip-card {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        .flip-card-front {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+        }
+        .flip-card-back {
+            background: linear-gradient(45deg, #e74c3c, #9b59b6);
+            transform: rotateY(180deg);
+        }
+
+        /* 2. Rotating Cube Example */
+        .rotating-cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate 8s infinite linear;
+        }
+        .cube-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.9;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        .front { 
+            background: #e74c3c;
+            transform: translateZ(100px);
+        }
+        .back { 
+            background: #3498db;
+            transform: translateZ(-100px) rotateY(180deg);
+        }
+        .right { 
+            background: #2ecc71;
+            transform: translateX(100px) rotateY(90deg);
+        }
+        .left { 
+            background: #f39c12;
+            transform: translateX(-100px) rotateY(-90deg);
+        }
+        @keyframes rotate {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* 3. 3D Gallery Example */
+        .gallery-3d {
+            width: 500px;
+            height: 300px;
+            position: relative;
+            perspective: 1000px;
+        }
+        .gallery-container {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: gallery-rotate 15s infinite linear;
+        }
+        .gallery-item {
+            position: absolute;
+            width: 200px;
+            height: 150px;
+            left: 150px;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        .gallery-item:nth-child(1) {
+            background: #e74c3c;
+            transform: rotateY(0deg) translateZ(200px);
+        }
+        .gallery-item:nth-child(2) {
+            background: #3498db;
+            transform: rotateY(90deg) translateZ(200px);
+        }
+        .gallery-item:nth-child(3) {
+            background: #2ecc71;
+            transform: rotateY(180deg) translateZ(200px);
+        }
+        .gallery-item:nth-child(4) {
+            background: #f39c12;
+            transform: rotateY(270deg) translateZ(200px);
+        }
+        @keyframes gallery-rotate {
+            from { transform: rotateY(0); }
+            to { transform: rotateY(360deg); }
+        }
+
+        /* 4. 3D Lift Effect */
+        .lift-effect {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        .lift-effect:hover {
+            transform: translateY(-20px) rotateX(15deg);
+        }
+        .lift-content {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #9b59b6, #3498db);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            border-radius: 10px;
+            box-shadow: 0 20px 30px rgba(0,0,0,0.3);
+            transform: translateZ(0);
+            transition: box-shadow 0.5s;
+        }
+        .lift-effect:hover .lift-content {
+            box-shadow: 0 40px 50px rgba(0,0,0,0.4);
+        }
+
+        /* 5. 3D Menu */
+        .menu-3d {
+            width: 300px;
+            perspective: 1000px;
+        }
+        .menu-item {
+            padding: 15px;
+            margin: 10px 0;
+            background: #3498db;
+            color: white;
+            text-align: center;
+            transform: rotateY(0deg);
+            transition: transform 0.3s, background 0.3s;
+            transform-origin: right center;
+        }
+        .menu-item:hover {
+            background: #e74c3c;
+            transform: rotateY(30deg);
+        }
+
+        /* 6. Book Page Effect */
+        .book-page {
+            width: 300px;
+            height: 400px;
+            position: relative;
+            perspective: 2000px;
+        }
+        .page {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: white;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transform-origin: left center;
+            transition: transform 1s;
+        }
+        .page-front {
+            background: #f9f9f9;
+            z-index: 2;
+        }
+        .page-back {
+            background: #f1f1f1;
+        }
+        .book-page:hover .page-front {
+            transform: rotateY(-160deg);
+        }
+    </style>
+</head>
+<body>
+    <h1>3D Transform Examples</h1>
+
+    <!-- Example 1: Flip Card -->
+    <div class="example-container">
+        <h2>1. Flip Card with Two Faces</h2>
+        <div class="example">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <h3>Front Side</h3>
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>Back Side</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="example-description">Hover over the card to see it flip. Uses <code>transform-style: preserve-3d</code> and <code>rotateY(180deg)</code>.</p>
+    </div>
+
+    <!-- Example 2: Rotating Cube -->
+    <div class="example-container">
+        <h2>2. Rotating Cube with Four Faces</h2>
+        <div class="example">
+            <div class="rotating-cube">
+                <div class="cube-face front">Front</div>
+                <div class="cube-face back">Back</div>
+                <div class="cube-face right">Right</div>
+                <div class="cube-face left">Left</div>
+            </div>
+        </div>
+        <p class="example-description">Continuously rotating cube using <code>animation</code> and <code>rotateY</code> transforms.</p>
+    </div>
+
+    <!-- Example 3: 3D Gallery -->
+    <div class="example-container">
+        <h2>3. 3D Image Gallery</h2>
+        <div class="example">
+            <div class="gallery-3d">
+                <div class="gallery-container">
+                    <div class="gallery-item">Image 1</div>
+                    <div class="gallery-item">Image 2</div>
+                    <div class="gallery-item">Image 3</div>
+                    <div class="gallery-item">Image 4</div>
+                </div>
+            </div>
+        </div>
+        <p class="example-description">3D gallery that rotates automatically. Each image is positioned in 3D space with <code>translateZ</code>.</p>
+    </div>
+
+    <!-- Example 4: 3D Lift Effect -->
+    <div class="example-container">
+        <h2>4. 3D Lift Effect</h2>
+        <div class="example">
+            <div class="lift-effect">
+                <div class="lift-content">
+                    <h3>Hover to Lift</h3>
+                </div>
+            </div>
+        </div>
+        <p class="example-description">Card that lifts up with 3D perspective on hover using <code>rotateX</code> and <code>translateY</code>.</p>
+    </div>
+
+    <!-- Example 5: 3D Menu -->
+    <div class="example-container">
+        <h2>5. 3D Menu Items</h2>
+        <div class="example">
+            <div class="menu-3d">
+                <div class="menu-item">Home</div>
+                <div class="menu-item">About</div>
+                <div class="menu-item">Services</div>
+                <div class="menu-item">Contact</div>
+            </div>
+        </div>
+        <p class="example-description">Menu items that rotate in 3D space when hovered using <code>rotateY</code>.</p>
+    </div>
+
+    <!-- Example 6: Book Page Effect -->
+    <div class="example-container">
+        <h2>6. Book Page Effect</h2>
+        <div class="example">
+            <div class="book-page">
+                <div class="page page-front">
+                    <h3>Front Page</h3>
+                </div>
+                <div class="page page-back">
+                    <h3>Back Page</h3>
+                </div>
+            </div>
+        </div>
+        <p class="example-description">Simulates a book page turning on hover with <code>transform-origin</code> set to the left edge.</p>
+    </div>
+</body>
+</html>

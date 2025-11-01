@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGITAL MEDAI HTML</title>
+  </head>-
+  <body>
+    <!-- العناوين المختلفة: لتحديد العناوين على مستويات مختلفة من الأهمية -->
+    <h1>Main Heading Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, perspiciatis.</h1>
+    <h2>Subheading 1</h2>
+    <h3>Subheading 2</h3>
+    <h4>Subheading 3</h4>
+    <h5>Subheading 4</h5>
+    <h6>Subheading 5</h6>
+    <!-- النصوص المخصصة: لتنسيق النصوص بأشكال مختلفة مثل النصوص العريضة أو المائلة -->
+    <p>
+      <mark>Highlighted Text</mark> <!-- تمييز النص -->
+      <br />
+      <b>Bold Text</b> <!-- نص عريض -->
+      <br />
+      <strong>Important Text</strong> <!-- نص مهم -->
+      <br />
+      <i>Italic Text</i> <!-- نص مائل -->
+      <br />
+      <em>Emphasized Text</em> <!-- نص مع إشارة التوكيد -->
+      <br />
+      <u>Underlined Text</u> <!-- نص تحت خط -->
+      <br />
+      <s>Strikethrough Text</s> <!-- نص به خط على النص -->
+      <br />
+      <del>Deleted Text</del> <!-- نص محذوف -->
+      <br />
+      <small>Small Text</small> <!-- نص صغير الحجم -->
+      <br />
+      <big>Big Text</big> <!-- نص كبير الحجم -->
+      <br />
+      <code>console.log("Hello, World!");</code> <!-- عرض شيفرة برمجية -->
+      <br />
+    </p>
+    <!-- إضافة صورة: لعرض صورة مع تحديد الأبعاد وبديل النص -->
+    <img src="img.png" alt="Example Image" width="300" height="400" /><br>
+    <!-- إضافة فيديو: لعرض فيديو مع خيارات مثل التحكم، التشغيل التلقائي، والتكرار -->
+    <video src="video.mp4" width="640" height="352" controls autoplay loop muted poster="img.png"></video><br>
+    <!-- إضافة ملف صوتي: لعرض ملف صوتي مع خيارات مثل التحكم، التشغيل التلقائي، والتكرار -->
+    <audio src="example.mp3" controls autoplay loop muted></audio><br>
+    <!-- عناصر الإدخال: لتمكين المستخدمين من إدخال بيانات معينة -->
+    <input type="button" value="Click Me" /> <br /> <!-- زر للنقر -->
+    <input type="email" placeholder="Enter your email" /> <br /> <!-- حقل لإدخال البريد الإلكتروني -->
+    <input type="password" placeholder="Enter your password" /> <br /> <!-- حقل لإدخال كلمة المرور -->
+    <input type="text" placeholder="Enter your name" /> <br /> <!-- حقل لإدخال الاسم -->
+    <input type="tel" placeholder="Enter your phone number" /> <br /> <!-- حقل لإدخال رقم الهاتف -->
+    <input type="radio" name="type" /> <br /> <!-- زر اختيار راديو -->
+    <input type="radio" name="type" /> <br /> <!-- زر اختيار راديو آخر -->
+    <input type="checkbox" name=""><br> <!-- مربع اختيار -->
+    <!-- نموذج إدخال بيانات: لتمكين المستخدمين من إدخال وتقديم البيانات -->
+    <form>
+      <label for="name">Full Name:</label> <!-- تسميات الحقول -->
+      <input type="text" id="name" name="name" /><br />
+      <label for="email">Email:</label> <!-- تسميات الحقول -->
+      <input type="email" id="email" name="email" /><br />
+      <input type="submit" value="Submit" /> <!-- زر تقديم البيانات -->
+    </form>
+    <!-- قائمة مرتبة: لعرض قائمة مع ترتيب رقمي -->
+    <ol>
+      <li>Apple</li> <!-- عنصر من القائمة المرتبة -->
+      <li>Banana</li> <!-- عنصر من القائمة المرتبة -->
+      <li>Orange</li> <!-- عنصر من القائمة المرتبة -->
+    </ol>
+    <!-- قائمة غير مرتبة: لعرض قائمة بدون ترتيب رقمي -->
+    <ul>
+      <li>HTML</li> <!-- عنصر من القائمة غير المرتبة -->
+      <li>CSS</li> <!-- عنصر من القائمة غير المرتبة -->
+      <li>JavaScript</li> <!-- عنصر من القائمة غير المرتبة -->
+    </ul>
+    <!-- قائمة منسدلة: لتقديم خيارات للمستخدم للاختيار من بينها -->
+    <select>
+      <option value="html">HTML</option> <!-- خيار  -->
+      <option value="css">CSS</option> <!-- خيار  -->
+      <option value="js">JavaScript</option> <!-- خيار  -->
+    </select>
+    <table border="1"> <!-- جدول لعرض البيانات بشكل منظم -->
+        <caption>Products</caption> <!-- تسمية الجدول -->
+        <thead> <!-- رأس الجدول -->
+          <tr> <!-- صف في رأس الجدول -->
+            <th>Product</th> <!-- خلية في رأس الجدول -->
+            <th>Price</th> <!-- خلية في رأس الجدول -->
+          </tr>
+        </thead>
+        <tbody> <!-- جسم الجدول -->
+          <tr> 
+            <td>Laptop</td>
+            <td>$800</td> 
+          </tr>
+          <tr>
+            <td>Phone</td>
+            <td>$500</td> 
+          </tr>
+        </tbody>
+    </table>
+    <input list="fruits" placeholder="Start typing..."><!-- قائمة بحثية: لتقديم قائمة بحثية للمستخدم -->
+    <datalist id="fruits"><!-- قائمة بحثية: لتحديد الخيارات المتاحة للبحث -->
+      <option value="Apple"><!-- خيار في القائمة البحثية -->
+      <option value="Banana"><!-- خيار في القائمة البحثية -->
+      <option value="Cherry"><!-- خيار في القائمة البحثية -->
+      <option value="Grapes"><!-- خيار في القائمة البحثية -->
+      <option value="Orange"><!-- خيار في القائمة البحثية -->
+      <option value="Pineapple"><!-- خيار في القائمة البحثية -->
+    </datalist>
+    <details>
+        <summary>Click to reveal more information</summary><!-- ملخص: لعرض ملخص للمحتوى المخفي -->
+        <p>This is some hidden content that will be shown when you click the summary above.</p><!-- محتوى مخفي -->
+      </details>
+    <!-- خط أفقي: للفصل بين الأقسام في الصفحة -->
+    <hr />
+    <!-- رابط خارجي: للانتقال إلى موقع آخر عند النقر عليه -->
+    <a href="https://www.example.com">Visit Example Website</a>
+    <!-- مركز النص: لتوسيط المحتوى داخل الصفحة -->
+    <center></center>
+  </body>
+</html>

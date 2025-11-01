@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete CSS Pseudo-classes & Pseudo-elements</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            counter-reset: example-counter;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            color: #3498db;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+        
+        h2::before {
+            counter-increment: example-counter;
+            content: counter(example-counter) ". ";
+        }
+        
+        .example {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        /* Pseudo-classes examples */
+        
+        /* 1. Dynamic pseudo-classes */
+        .hover-example {
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            transition: all 0.3s;
+        }
+        .hover-example:hover { background-color: #c0392b; }
+        
+        .active-example {
+            background-color: #3498db;
+            color: white;
+            padding: 10px;
+            display: inline-block;
+        }
+        .active-example:active { background-color: #2980b9; transform: scale(0.98); }
+        
+        .focus-example {
+            padding: 8px;
+            border: 2px solid #ddd;
+            outline: none;
+        }
+        .focus-example:focus { border-color: #9b59b6; box-shadow: 0 0 5px #9b59b6; }
+        
+        .visited-example:link { color: #3498db; }
+        .visited-example:visited { color: #8e44ad; }
+        
+        /* 2. Structural pseudo-classes */
+        .first-child-example p:first-child { font-weight: bold; color: #e67e22; }
+        .last-child-example p:last-child { font-style: italic; color: #27ae60; }
+        
+        .nth-child-example li:nth-child(odd) { background-color: #f2f2f2; }
+        .nth-child-example li:nth-child(even) { background-color: #e6e6e6; }
+        .nth-child-example li:nth-child(3n) { color: #e74c3c; }
+        
+        .first-of-type-example p:first-of-type { text-decoration: underline; }
+        .last-of-type-example p:last-of-type { border-left: 3px solid #3498db; padding-left: 10px; }
+        
+        .only-child-example p:only-child { background-color: #f1c40f; padding: 5px; }
+        .only-of-type-example span:only-of-type { font-size: 1.2em; color: #9b59b6; }
+        
+        /* 3. Form-related pseudo-classes */
+        .disabled-example:disabled { background-color: #ddd; cursor: not-allowed; }
+        
+        .checked-example:checked + label { color: #16a085; font-weight: bold; }
+        
+        .required-example:required { border-left: 3px solid #e74c3c; }
+        .optional-example:optional { border-left: 3px solid #2ecc71; }
+        
+        .valid-example:valid { border-color: #27ae60; }
+        .valid-example:invalid { border-color: #e74c3c; }
+        
+        .in-range-example:in-range { background-color: #d5f5e3; }
+        .out-of-range-example:out-of-range { background-color: #fadbd8; }
+        
+        .read-only-example:read-only { background-color: #f2f3f4; }
+        .read-write-example:read-write { background-color: #e8f8f5; }
+        
+        /* 4. Language pseudo-class */
+        .lang-example:lang(fr) { color: #3498db; }
+        .lang-example:lang(es) { color: #e74c3c; }
+        
+        /* 5. Other pseudo-classes */
+        .not-example p:not(.special) { opacity: 0.7; }
+        
+        .empty-example:empty {
+            height: 20px;
+            background-color: #f39c12;
+            margin: 10px 0;
+        }
+        
+        .root-example { background-color: #f0f0f0; padding: 10px; }
+        :root { --main-color: #3498db; }
+        .root-example { color: var(--main-color); }
+        
+        .target-example:target {
+            background-color: #f9e79f;
+            padding: 10px;
+            border: 1px solid #f1c40f;
+        }
+        
+        /* Pseudo-elements examples */
+        .first-letter-example::first-letter {
+            font-size: 2em;
+            color: #e74c3c;
+            float: left;
+            margin-right: 5px;
+            line-height: 1;
+        }
+        
+        .first-line-example::first-line {
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .before-example::before {
+            content: "Before content - ";
+            color: #e67e22;
+            font-weight: bold;
+        }
+        
+        .after-example::after {
+            content: " - After content";
+            color: #9b59b6;
+            font-weight: bold;
+        }
+        
+        .selection-example::selection {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .marker-example li::marker {
+            color: #e74c3c;
+            font-size: 1.2em;
+        }
+        
+        .placeholder-example::placeholder {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Complete CSS Pseudo-classes & Pseudo-elements Examples</h1>
+    
+    <h2>Dynamic Pseudo-classes</h2>
+    
+    <div class="example">
+        <h3>:hover</h3>
+        <div class="hover-example">Hover over me</div>
+    </div>
+    
+    <div class="example">
+        <h3>:active</h3>
+        <div class="active-example">Click and hold me</div>
+    </div>
+    
+    <div class="example">
+        <h3>:focus</h3>
+        <input type="text" class="focus-example" placeholder="Focus on me">
+    </div>
+    
+    <div class="example">
+        <h3>:link and :visited</h3>
+        <a href="#visited" class="visited-example">Test link (click then come back)</a>
+    </div>
+    
+    <h2>Structural Pseudo-classes</h2>
+    
+    <div class="example">
+        <h3>:first-child and :last-child</h3>
+        <div class="first-child-example last-child-example">
+            <p>First child (bold and orange)</p>
+            <p>Middle child</p>
+            <p>Last child (italic and green)</p>
+        </div>
+    </div>
+    
+    <div class="example">
+        <h3>:nth-child()</h3>
+        <ul class="nth-child-example">
+            <li>Odd items (light gray)</li>
+            <li>Even items (lighter gray)</li>
+            <li>Every 3rd item (red text)</li>
+            <li>Item 4</li>
+            <li>Item 5 (red text)</li>
+        </ul>
+    </div>
+    
+    <div class="example">
+        <h3>:first-of-type and :last-of-type</h3>
+        <div class="first-of-type-example last-of-type-example">
+            <p>First paragraph (underlined)</p>
+            <div>Div element</div>
+            <p>Middle paragraph</p>
+            <span>Span element</span>
+            <p>Last paragraph (blue left border)</p>
+        </div>
+    </div>
+    
+    <div class="example">
+        <h3>:only-child and :only-of-type</h3>
+        <div class="only-child-example">
+            <p>I'm the only child (yellow background)</p>
+        </div>
+        <div class="only-of-type-example">
+            <p>Paragraph</p>
+            <span>Only span (purple and larger)</span>
+            <p>Another paragraph</p>
+        </div>
+    </div>
+    
+    <h2>Form-related Pseudo-classes</h2>
+    
+    <div class="example">
+        <h3>:disabled</h3>
+        <input type="text" class="disabled-example" disabled placeholder="Disabled input">
+    </div>
+    
+    <div class="example">
+        <h3>:checked</h3>
+        <input type="checkbox" id="check1" class="checked-example">
+        <label for="check1">Checkbox (label turns teal when checked)</label>
+    </div>
+    
+    <div class="example">
+        <h3>:required and :optional</h3>
+        <input type="text" class="required-example" required placeholder="Required field (red left border)">
+        <input type="text" class="optional-example" placeholder="Optional field (green left border)">
+    </div>
+    
+    <div class="example">
+        <h3>:valid and :invalid</h3>
+        <input type="email" class="valid-example" placeholder="Enter valid email (green when valid, red when invalid)">
+    </div>
+    
+    <div class="example">
+        <h3>:in-range and :out-of-range</h3>
+        <input type="number" min="1" max="10" value="5" class="in-range-example" placeholder="Number between 1-10">
+        <input type="number" min="1" max="10" value="15" class="out-of-range-example" placeholder="Number outside 1-10">
+    </div>
+    
+    <div class="example">
+        <h3>:read-only and :read-write</h3>
+        <input type="text" class="read-only-example" readonly value="Read-only field">
+        <input type="text" class="read-write-example" value="Editable field">
+    </div>
+    
+    <h2>Other Pseudo-classes</h2>
+    
+    <div class="example">
+        <h3>:lang()</h3>
+        <p class="lang-example" lang="fr">Ce texte est en français (blue)</p>
+        <p class="lang-example" lang="es">Este texto está en español (red)</p>
+    </div>
+    
+    <div class="example">
+        <h3>:not()</h3>
+        <div class="not-example">
+            <p>Normal paragraph (semi-transparent)</p>
+            <p class="special">Special paragraph (normal opacity)</p>
+            <p>Another normal paragraph</p>
+        </div>
+    </div>
+    
+    <div class="example">
+        <h3>:empty</h3>
+        <div class="empty-example"></div>
+        <p>The above empty div has orange background</p>
+    </div>
+    
+    <div class="example">
+        <h3>:root</h3>
+        <div class="root-example">This text uses a CSS variable defined in :root</div>
+    </div>
+    
+    <div class="example">
+        <h3>:target</h3>
+        <a href="#target-demo">Click to target the element below</a>
+        <div id="target-demo" class="target-example">
+            This element gets highlighted when targeted by URL fragment
+        </div>
+    </div>
+    
+    <h2>Pseudo-elements</h2>
+    
+    <div class="example">
+        <h3>::first-letter</h3>
+        <p class="first-letter-example">The first letter of this paragraph is larger and red.</p>
+    </div>
+    
+    <div class="example">
+        <h3>::first-line</h3>
+        <p class="first-line-example">The first line of this paragraph is bold and blue. If you resize your window, you'll see only the first visible line is styled this way, no matter how it wraps.</p>
+    </div>
+    
+    <div class="example">
+        <h3>::before</h3>
+        <p class="before-example">This paragraph has content added before it.</p>
+    </div>
+    
+    <div class="example">
+        <h3>::after</h3>
+        <p class="after-example">This paragraph has content added after it.</p>
+    </div>
+    
+    <div class="example">
+        <h3>::selection</h3>
+        <p class="selection-example">Try selecting this text (blue background with white text).</p>
+    </div>
+    
+    <div class="example">
+        <h3>::marker</h3>
+        <ul class="marker-example">
+            <li>List item 1</li>
+            <li>List item 2</li>
+            <li>List item 3 (markers are red and larger)</li>
+        </ul>
+    </div>
+    
+    <div class="example">
+        <h3>::placeholder</h3>
+        <input type="text" class="placeholder-example" placeholder="Placeholder text is gray and italic">
+    </div>
+</body>
+</html>

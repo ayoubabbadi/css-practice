@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Difference Between Justify Properties</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .example {
+            margin: 20px 0;
+            padding: 15px;
+            background: #e7e7e7;
+            border-left: 5px solid #333;
+        }
+        .code {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+        }
+        .flex-container, .grid-container ,.grid-container-content{
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 10px;
+            background: #ddd;
+            border: 1px solid #999;
+        }
+        .flex-container {
+            display: flex;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-template-rows: repeat(2, 50px);
+        }
+        .grid-container-content {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+        }
+        .item {
+            background: gold;
+            color: #000;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Difference Between Justify Properties</h1>
+
+        <!-- Justify Content -->
+        <h2>1. justify-content</h2>
+        <p>
+            The <strong>justify-content</strong> property is used to align items along the <strong>main axis</strong> in a Flexbox or Grid container. It controls the distribution of space between and around items.
+        </p>
+        <div class="example">
+            <h3>Example: justify-content in Flexbox</h3>
+            <div class="flex-container" style="justify-content: space-between;">
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item 3</div>
+            </div>
+            <div class="code">
+                <pre>
+.flex-container {
+    display: flex;
+    justify-content: space-between; /* Distributes items with equal space between them */
+}
+                </pre>
+            </div>
+        </div>
+        <!-- Justify Items -->
+        <h2>2. justify-content</h2>
+        <p>
+            The <strong>justify-content</strong> property is used to align items along the <strong>main axis</strong> in a Flexbox or Grid container. It controls the distribution of space between and around items.
+        </p>
+        <div class="example">
+            <h3>Example: justify-content in Grid</h3>
+            <div class="grid-container-content" style="justify-content: space-between;">
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item 3</div>
+                <div class="item">Item 4</div>
+                <div class="item">Item 5</div>
+                <div class="item">Item 6</div>
+            </div>
+            <div class="code">
+                <pre>
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    justify-content: space-between; /* Distributes items with equal space between them 
+}
+                </pre>
+            </div>
+        </div>
+        <!-- Justify Items -->
+        <h2>3. justify-items</h2>
+        <p>
+            The <strong>justify-items</strong> property is used in <strong>CSS Grid</strong> to align items within their grid cells along the <strong>main axis</strong>.
+        </p>
+        <div class="example">
+            <h3>Example: justify-items in Grid</h3>
+            <div class="grid-container" style="justify-items: center;">
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item 3</div>
+                <div class="item">Item 4</div>
+                <div class="item">Item 5</div>
+                <div class="item">Item 6</div>
+            </div>
+            <div class="code">
+                <pre>
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(2, 50px);
+    justify-items: center; /* Centers items within their grid cells */
+}
+                </pre>
+            </div>
+        </div>
+
+        <!-- Justify Self -->
+        <h2>4. justify-self</h2>
+        <p>
+            The <strong>justify-self</strong> property is used in <strong>CSS Grid</strong> to align a specific item within its grid cell along the <strong>main axis</strong>. It overrides the <strong>justify-items</strong> value for that item.
+        </p>
+        <div class="example">
+            <h3>Example: justify-self in Grid</h3>
+            <div class="grid-container" style="justify-items: start;">
+                <div class="item">Item 1</div>
+                <div class="item" style="justify-self: end;background-color: red;">Item 2</div>
+                <div class="item">Item 3</div>
+                <div class="item">Item 4</div>
+                <div class="item">Item 5</div>
+                <div class="item">Item 6</div>
+            </div>
+            <div class="code">
+                <pre>
+.item {
+    justify-self: end; /* Aligns this specific item to the end of its cell */
+    background-color: red;
+}
+                </pre>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
